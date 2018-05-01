@@ -22,7 +22,11 @@ export const isNotificationCreated = async () => AsyncStorage.getItem(NOTIFICATI
 
 export const setNotification =  async () => AsyncStorage.setItem(NOTIFICATION_KEY, JSON.stringify(true));
 
-export const addDeck = async (data) => AsyncStorage.setItem(guid(), JSON.stringify(data));
+export const addDeck = async (data) => {
+  const id = guid();
+  await AsyncStorage.setItem(id, JSON.stringify(data));
+  return id
+}
 
 export const getDeck = async (id) => AsyncStorage.getItem(id)
 

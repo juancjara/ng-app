@@ -27,8 +27,8 @@ export default class CreateDeck extends React.Component {
 
   addDeck = async () => {
     const { title } = this.state;
-    await addDeck({title, cards: []})
-    this.props.navigation.navigate('DeckList')
+    const id = await addDeck({title, cards: []})
+    this.props.navigation.replace('DeckView', { id })
   }
 
   render() {
